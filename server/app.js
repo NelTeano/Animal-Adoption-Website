@@ -1,22 +1,29 @@
-import express from 'express'
+import express from "express"; // Import using ESM syntax
+import dotenv from "dotenv";
+import cors from 'cors';
+import { initDatabase } from './database.js'
+import UserRoutes from './routes/UserRoutes.js';
 
-const router = express.Router();
 const app = express();
+dotenv.config();
+initDatabase();
+
 const PORT = 5173;
-console.log("app is running")
+console.log("app is running");
+app.use(cors({
+
+    origin: ['http://localhost:5173','http://localhost:5173']
+}));
+
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-app.listen(PORT, function() {
-    console.log('Listening on http://localhost:' + PORT);
+app.listen(PORT, function () {
+    console.log("Listening on http://localhost:" + PORT);
 });
 
-export default router
-import * as React from 'react';
-import Button from '@mui/material/Button';
 
-export default function ButtonUsage() {
-  return <Button variant="contained">Hello world</Button>;
-}
+
+app.use("/home", UserRoutes); // USE THE ROUTE YOU CREATED
