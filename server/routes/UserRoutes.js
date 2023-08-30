@@ -15,10 +15,11 @@ UserRoutes.post("/", async (req, res) => {
   try {
     await NewUser.save();
     res.send(NewUser);
-  } catch {
-    res.status(500).json({ message: "Error creating user" });
+  } catch(err) {
+    res.status(500).json({ message: "Error creating user" , err });
   }
 });
+
 
 
 export default UserRoutes;

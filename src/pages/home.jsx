@@ -12,7 +12,13 @@ function Home() {
 
 
     const [count, setCount] = useState(0)
-    const { loginWithRedirect } = useAuth0();
+    const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0();
+
+    
+    if(isAuthenticated){
+        console.log(user.name , user.email)
+    }
+
 
     return (
     <>
@@ -27,6 +33,7 @@ function Home() {
                     count is {count}
                 </button>
                 <button onClick={() => loginWithRedirect()}>Log In</button>
+                <button onClick={() => logout()}>Log Out</button>
                 <Button></Button>
                 <p>
                     Edit <code>src/App.jsx</code> and save to test HMR
