@@ -4,14 +4,13 @@ import ReactDOM from 'react-dom/client'
 // APP COMPONENT
 import App from './App.jsx'
 
-// AUTH0 PROVIDER
-import { Auth0Provider } from '@auth0/auth0-react';
+// PROVIDER
+import { Auth0Provider } from '@auth0/auth0-react'; // AUTH0
+import { ChakraProvider } from '@chakra-ui/react' // CHAKRA UI
 
 // REACT ROUTER PROVIDER
 import { BrowserRouter } from 'react-router-dom'
 
-// GLOBALS CSS
-import './index.css'
 
 
 
@@ -28,7 +27,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   >
     <React.StrictMode>
       <BrowserRouter>
-        <App />
+        <ChakraProvider>
+          <App />
+        </ChakraProvider>
       </BrowserRouter>
     </React.StrictMode>
   </Auth0Provider>

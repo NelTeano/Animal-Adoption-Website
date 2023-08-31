@@ -4,8 +4,9 @@ import viteLogo from '/vite.svg'
 
 import { useAuth0 } from "@auth0/auth0-react";
 
+
 // COMPONENTS
-import Button from '../components/AuthButton'
+import Navbar from '../components/Navbar'
 import '../App.css'
 
 function Home() {
@@ -16,12 +17,13 @@ function Home() {
 
     
     if(isAuthenticated){
-        console.log(user.name , user.email)
+        console.log(user.name , user.email, user)
     }
 
 
     return (
     <>
+    <Navbar></Navbar>
         <div>
             <div>
                 <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -34,7 +36,6 @@ function Home() {
                 </button>
                 <button onClick={() => loginWithRedirect()}>Log In</button>
                 <button onClick={() => logout()}>Log Out</button>
-                <Button></Button>
                 <p>
                     Edit <code>src/App.jsx</code> and save to test HMR
                 </p>
