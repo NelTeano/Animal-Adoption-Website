@@ -9,7 +9,6 @@ UserRoutes.post("/", async (req, res) => {
   const NewUser = new UserModel({
     name: req.body.name,
     email: req.body.email,
-    date: req.body.date,
   });
 
   try {
