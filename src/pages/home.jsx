@@ -6,7 +6,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 
 // COMPONENTS
-import Navbar from '../components/Navbar'
+// import Navbar from '../components/Navbar'
 import '../App.css'
 
 function Home() {
@@ -23,7 +23,7 @@ function Home() {
 
     return (
     <>
-    <Navbar></Navbar>
+    {/* <Navbar></Navbar> */}
         <div>
             <div>
                 <img src={viteLogo} className="logo" alt="Vite logo" />

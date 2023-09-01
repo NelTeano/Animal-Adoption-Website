@@ -6,6 +6,7 @@ import { Route, Routes } from 'react-router-dom'
 // PAGES FILES
 import Home from './pages/home'
 import Navbar from './components/Navbar'
+import LandingPage from './pages/landingpage'
 
 
 function App() {
@@ -67,11 +68,15 @@ function App() {
 
   return (
     <>
-      <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/logout' element={<Home/>}/>
-        <Route path='/test' element={<Navbar/>}/>
-      </Routes>
+      <Navbar/> 
+        <Routes>
+          <Route path='/' element={<LandingPage/>}/>
+          <Route path='/about' element={<></>}/>
+          <Route path='/service' element={<></>}/>
+          <Route path='/gallery' element={<></>}/>
+          <Route path='/contact' element={<Home/>}/>
+          {/* <Route path='/test' element={<Home/>}/> */}
+        </Routes>
     </>
   )
 }

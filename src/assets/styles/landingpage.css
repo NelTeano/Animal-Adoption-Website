@@ -1,0 +1,82 @@
+
+
+.board-container{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 50px;  
+    margin-left: 135px;
+
+}
+
+h1{
+    font-size: 69px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.board-about p{
+    color: #404040;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 23px;
+}
+
+.board-total{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 65px;
+}
+.board-total h2{   
+    font-size: 43px;
+    font-style: normal;
+    font-weight: 650;
+    line-height: normal;
+}
+.board-total p{
+    color: #686868;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+
+/* FLOATING SHAPE VECTORS */
+
+.dog-vector{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 10%;
+}
+
+
+.cat-vector{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 25%;
+    top: 500px;
+}
+
+.paw-vector{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+}
+
+@media only screen and (max-width: 1252px) {
+    .dog-vector{display: none;}
+    .cat-vector{display: none;}
+    .paw-vector{left: 90%}
+}
+

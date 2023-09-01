@@ -2,7 +2,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 
 // STYLE
-import '../assets/navbar.css'
+import '../assets/styles/navbar.css'
 import Logo from '../assets/Adoption-Website-Logo.png'
 
 // COMPONENTS

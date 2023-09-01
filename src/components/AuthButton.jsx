@@ -12,6 +12,7 @@ function AuthButton() {
         _hover: {
             backgroundColor: '#8984c7',
             color: 'white',
+            transition: '0.7s'
         },
     };
     
