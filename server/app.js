@@ -33,4 +33,4 @@ app.listen(PORT, function () {
 
 
 
-app.use("/home", UserRoutes); // USE THE ROUTE YOU CREATED
+app.use("/api", UserRoutes); // USE THE ROUTE YOU CREATED

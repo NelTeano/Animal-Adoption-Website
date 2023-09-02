@@ -7,7 +7,7 @@ import Dog from '../assets/dog-landingpage.png'
 import Cat from '../assets/cat-landingpage.png'
 
 // STYLE CSS
-import '../assets/styles/landingpage.css'
+import '../assets/styles/landingStyle.css'
 
 
 export default function Landingpage() {

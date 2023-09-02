@@ -1,4 +1,4 @@
-import { useState, useEffect }  from 'react'
+import { useState }  from 'react'
 import reactLogo from '../assets/react.svg'
 import viteLogo from '/vite.svg'
 
@@ -13,10 +13,10 @@ function Home() {
 
 
     const [count, setCount] = useState(0)
-    const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0();
+    const { loginWithRedirect, logout } = useAuth0();
 
 
-    
+    // console.log(user)
     // ---------------------  TESTING SUBMITTING FORM  ---------------------
 
     const [formData, setFormData] = useState({
@@ -33,7 +33,7 @@ function Home() {
     const handleSubmit = async (event) => {
         event.preventDefault();      // PREVENT DEFAULT VALUES IN SUBMITTING FORM
         try {
-        const response = await fetch("http://localhost:5174/home", {  // FETCHING THE ROUTE OF SERVER
+        const response = await fetch("http://localhost:5174/api/home", {  // FETCHING THE ROUTE OF SERVER
             method: 'POST',                                         
             headers: {
             'Content-Type': 'application/json',       
@@ -51,8 +51,10 @@ function Home() {
         console.error('Error fetching data:', err);
         }
     }
-    
+
     // ---------------------  TESTING SUBMITTING FORM  ---------------------
+
+    
         
     
     return (
