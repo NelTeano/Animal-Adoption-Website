@@ -20,10 +20,11 @@ import LandingPage from './pages/landingpage'
 
 function App() {
 
-  const {  user } = useAuth0();
+  const { user , isAuthenticated } = useAuth0();
   const [data, setData] = useState('');
   
-  console.log(user)
+
+  {isAuthenticated && console.log(user)}
 
   useEffect(()=>{
   async function FetchOtherLink(){
@@ -35,7 +36,6 @@ function App() {
       })
       const jsonData = await data.json();
       setData(jsonData); 
-      console.log(data);
     }catch(err){
       console.error('Error fetching data:', err);
     }
@@ -45,10 +45,14 @@ function App() {
 
 
 
-  },[setData])
+  },[])
 
   console.log(data);
+
   
+  
+  
+
   
 
 

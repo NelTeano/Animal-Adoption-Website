@@ -1,8 +1,6 @@
 import { Image, Button } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
-
-
-
+import PropTypes from 'prop-types'; 
 
 
 
@@ -72,10 +70,10 @@ function AnimalCard({ animalName, animalPicture, animalAge }) {
     }
 
     AnimalCard.propTypes = {
-        picture: AnimalCard.node,
-        animalName: AnimalCard.node, 
-        animalPicture: AnimalCard.node, 
-        animalAge: AnimalCard.node
+        animalName: PropTypes.string.isRequired, 
+        animalPicture: PropTypes.string.isRequired,
+        animalAge: PropTypes.string.isRequired,
     };
+
 
     export default AnimalCard

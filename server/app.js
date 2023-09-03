@@ -1,8 +1,14 @@
-import express from "express"; // Import using ESM syntax
+// PACKAGE IMPORTS 
+import express from "express"; 
 import dotenv from "dotenv";
 import cors from 'cors';
+
+// DATABASE CONNECTION
 import { initDatabase } from './database.js'
+
+// ROUTES
 import UserRoutes from './routes/UserRoutes.js';
+import AnimalRoutes from './routes/AnimalRoutes.js'
 
 const app = express();
 dotenv.config();
@@ -32,5 +38,6 @@ app.listen(PORT, function () {
 });
 
 
-
-app.use("/api", UserRoutes); // USE THE ROUTE YOU CREATED
+ // USE THE ROUTE YOU CREATED
+app.use("/api", UserRoutes);
+app.use("/api", AnimalRoutes)
