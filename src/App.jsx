@@ -29,7 +29,7 @@ function App() {
   useEffect(()=>{
   async function FetchOtherLink(){
     try{
-      const data = await fetch("http://localhost:5174/api/home", {
+      const data = await fetch("http://localhost:5174/api/users", {
         headers: {
           Accept: 'application/json',
         },

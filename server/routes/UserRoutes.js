@@ -4,7 +4,7 @@ import UserModel from "../models/User.js";
 
 const UserRoutes = Router();
 
-UserRoutes.post("/home", async (req, res) => {
+UserRoutes.post("/users", async (req, res) => {
   console.log("post method enabled")
 
   const NewUser = new UserModel({
@@ -22,7 +22,7 @@ UserRoutes.post("/home", async (req, res) => {
 });
 
 
-UserRoutes.get("/home", async (req, res) =>{
+UserRoutes.get("/users", async (req, res) =>{
   
     try{
         const getUsers = await UserModel.find({});
