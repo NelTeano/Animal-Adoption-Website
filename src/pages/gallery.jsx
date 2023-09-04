@@ -1,6 +1,5 @@
 
 import AnimalCard  from '../components/AnimalCard';
-import DogModel from '../assets/dogmodel.png'
 import { Select } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 
@@ -9,49 +8,6 @@ import '../assets/styles/galleryStyle.css'
 
 
 
-// TESTING VALUES
-const ValueTestProps  = [
-    {
-        name: 'Trump',
-        age: '8yrs'
-    },
-    {
-        name: 'Buddy',
-        age: '4yrs'
-    },
-    {
-        name: 'Rex',
-        age: '6yrs'
-    },
-    {
-        name: 'Rex',
-        age: '6yrs'
-    },
-    {
-        name: 'Rex',
-        age: '6yrs'
-    },
-    {
-        name: 'Rex',
-        age: '6yrs'
-    },
-    {
-        name: 'Rex',
-        age: '6yrs'
-    },
-    {
-        name: 'Rex',
-        age: '6yrs'
-    },
-    {
-        name: 'Rex',
-        age: '6yrs'
-    },
-    {
-        name: 'Rex',
-        age: '6yrs'
-    },
-];
 
     function Gallery() {
 
@@ -80,21 +36,8 @@ const ValueTestProps  = [
 
     
     console.log(AnimalData);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+    
         return (
             <>
                 <div className='gallery-board'>
@@ -114,19 +57,21 @@ const ValueTestProps  = [
                     </div>
                 </div>
                 <div className='gallery-container'>
-                    { ValueTestProps.map((dogs, index)=>
-                        (
+                    { AnimalData && AnimalData.map((dogs, index)=>                
                             <AnimalCard
                                 key={index}
-                                animalPicture={DogModel}
+                                animalPicture={dogs.animal_image}
                                 animalName={dogs.name}
                                 animalAge={dogs.age}
                             />
-                        )
                     )}
+
                 </div>
             </>
         )
     }
+
+
+    
 
 export default Gallery

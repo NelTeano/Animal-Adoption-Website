@@ -61,7 +61,7 @@ function AnimalCard({ animalName, animalPicture, animalAge }) {
                         <Button
                             sx={buttonStyle}
                         >
-                            <h3>{propsTypes.name}</h3> <p>{propsTypes.age}</p>
+                            <h3 style={{fontSize: '15px'}}>{propsTypes.name}</h3> <p>{propsTypes.age} yrs</p>
                         </Button>
                     </Link>
                 </div>
