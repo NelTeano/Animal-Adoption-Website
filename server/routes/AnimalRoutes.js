@@ -9,12 +9,12 @@ AnimalRoutes.get("/animals", async (req, res) =>{
 
     try {
         const animals = await AnimalModel.find({});
+        console.log('Success Get Animals Data')
         res.send(animals);
     } catch (error) {
         console.error('Error fetching data:', error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
-    console.log('GetAnimals')
 })
 
 export default AnimalRoutes;

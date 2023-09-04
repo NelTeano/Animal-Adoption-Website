@@ -5,7 +5,6 @@ import UserModel from "../models/User.js";
 const UserRoutes = Router();
 
 UserRoutes.post("/users", async (req, res) => {
-  console.log("post method enabled")
 
   const NewUser = new UserModel({
     name: req.body.name,
@@ -26,6 +25,7 @@ UserRoutes.get("/users", async (req, res) =>{
   
     try{
         const getUsers = await UserModel.find({});
+        console.log("Success Get Users Data")
         res.send(getUsers)
     }catch(err){
         console.log('Cannot Get Users' , err)
