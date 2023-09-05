@@ -4,6 +4,7 @@ import UserModel from "../models/User.js";
 
 const UserRoutes = Router();
 
+// ROUTES TO SUBMIT A POST REQUEST FOR USER DETAILS
 UserRoutes.post("/users", async (req, res) => {
 
   const NewUser = new UserModel({
@@ -20,7 +21,7 @@ UserRoutes.post("/users", async (req, res) => {
   }
 });
 
-
+// ROUTES TO GET ALL USERS
 UserRoutes.get("/users", async (req, res) =>{
   
     try{
@@ -34,4 +35,4 @@ UserRoutes.get("/users", async (req, res) =>{
 
 
 
-export default UserRoutes;
+export default UserRoutes;  // EXPORT THE WHOLE ROUTE TO ABLE TO USE IN APP.JS

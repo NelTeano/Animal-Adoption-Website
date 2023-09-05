@@ -4,6 +4,7 @@ import { Button } from '@chakra-ui/react'
 
 function AuthButton() {
     const { loginWithRedirect, logout,  isAuthenticated } = useAuth0();
+
     const ButtonStyle = {
         backgroundColor: '#ADA7FF',
         color: 'white',
@@ -21,13 +22,13 @@ function AuthButton() {
         { isAuthenticated ? 
             <Button 
                 sx={ButtonStyle}
-                onClick={() => logout()}
+                onClick={() => logout()} // ACTIVATE CALLBACK LOGOUT THE ACCOUNT AND REDIRECT
             >
                 Sign Out
             </Button> :
             <Button 
                 sx={ButtonStyle}
-                onClick={() => loginWithRedirect()}
+                onClick={() => loginWithRedirect()} // ACTIVATE CALLBACK LOGIN REDIRECTED TO AUTH0 LOGINPAGE
             >
                 Sign In
             </Button>

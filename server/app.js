@@ -11,28 +11,24 @@ import UserRoutes from './routes/UserRoutes.js';
 import AnimalRoutes from './routes/AnimalRoutes.js'
 
 const app = express();
-dotenv.config();
+dotenv.config();                  // ACCESS .ENV 
 initDatabase();
 
 const PORT = 5174;
 console.log("app is running");
 
 app.use(cors({
-    origin: ['http://localhost:5173','http://localhost:5173']
+    origin: ['http://localhost:5173','http://localhost:5173']  // THE HTTP(ORIGIN) THAT WILL ALLOW TO ACCESS THE ROUTES
 }));
 
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173'); // Update with your frontend's URL
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE'); // Include POST
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    next();
-});
+
 
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
+// ACTIVATE SERVER PORT 
 app.listen(PORT, function () {
     console.log("Listening on http://localhost:" + PORT);
 });

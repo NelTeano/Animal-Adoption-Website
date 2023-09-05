@@ -69,6 +69,7 @@ function AnimalCard({ animalName, animalPicture, animalAge }) {
         )
     }
 
+    // PROPS VALIDATION ALSO WHAT TYPE PROPS PROPERTIES WILL CONTAIN(WITHOUT THIS CONSOLE WILL WARN PROPS VALIDATION ES6)
     AnimalCard.propTypes = {
         animalName: PropTypes.string.isRequired, 
         animalPicture: PropTypes.string.isRequired,

@@ -16,6 +16,7 @@ function AvatarIcon({ picture }) {
     )
 }
 
+// FOR PROPS VALIDATION WARNING
 AvatarIcon.propTypes = {
     picture: PropTypes.node,
 };

@@ -46,7 +46,7 @@ function Navbar() {
                 </div>
                 <div className="user-menu">  
                     <Authbutton></Authbutton>        
-                    { isAuthenticated && <Avatar picture={user.picture} ></Avatar>}
+                    { isAuthenticated && <Avatar picture={user.picture} ></Avatar>} { /* IF USER IS STILL LOGGED AVATAR ICON WILL SHOW */ }
                 </div>
             </nav>
         </>

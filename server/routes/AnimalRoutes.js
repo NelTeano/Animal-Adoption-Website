@@ -3,9 +3,8 @@ import AnimalModel from '../models/Animal.js'
 
 const AnimalRoutes = Router();
 
-
+// ROUTES TO GET ALL ANIMALS 
 AnimalRoutes.get("/animals", async (req, res) =>{
-
 
     try {
         const animals = await AnimalModel.find({});
@@ -17,4 +16,4 @@ AnimalRoutes.get("/animals", async (req, res) =>{
     }
 })
 
-export default AnimalRoutes;
+export default AnimalRoutes; // EXPORT THE WHOLE ROUTE TO ABLE TO USE IN APP.JS

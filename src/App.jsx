@@ -8,23 +8,21 @@ import { useAuth0 } from "@auth0/auth0-react";
 // PAGES FILES
 import Home from './pages/home'
 import Gallery from './pages/gallery'
-import Navbar from './components/Navbar'
 import LandingPage from './pages/landingpage'
+import AboutPage from './pages/about'
 
-
-// JUST FOR TESTING PROPS
-
+// COMPONENTS
+import Navbar from './components/Navbar'
 
 
 
 
 function App() {
 
-  const { user , isAuthenticated } = useAuth0();
+  const { user , isAuthenticated } = useAuth0(); 
   const [data, setData] = useState('');
-  
 
-  {isAuthenticated && console.log(user)}
+  {isAuthenticated && console.log(user)} // PRINTS USER DETAILS IF IT LOGGED IN
 
   useEffect(()=>{
   async function FetchOtherLink(){
@@ -41,13 +39,10 @@ function App() {
     }
   }
 
-  FetchOtherLink();
-
-
-
+  FetchOtherLink(); // FETCHING USERS DATA FROM DB
   },[])
 
-  console.log(data);
+  console.log(data); // PRINTS USERS DATA JUST FOR CHECKING
 
   
   
@@ -66,7 +61,7 @@ function App() {
           />
           <Route
             path='/about' 
-            element={<></>}/>
+            element={<AboutPage/>}/>
           <Route
             path='/service'
               element={<></>}/>
@@ -78,7 +73,6 @@ function App() {
           <Route
             path='/contact'
               element={<Home/>}/>
-          {/* <Route path='/test' element={<Home/>}/> */}
         </Routes>
     </>
   )

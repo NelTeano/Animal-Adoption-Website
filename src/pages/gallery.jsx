@@ -57,12 +57,13 @@ import '../assets/styles/galleryStyle.css'
                     </div>
                 </div>
                 <div className='gallery-container'>
-                    { AnimalData && AnimalData.map((dogs, index)=>                
+                    { AnimalData && AnimalData.map((animal, index)=>                
                             <AnimalCard
                                 key={index}
-                                animalPicture={dogs.animal_image}
-                                animalName={dogs.name}
-                                animalAge={dogs.age}
+                                animalPicture={animal.animal_image}
+                                animalName={animal.name}
+                                animalAge={animal.age}
+                                animalDetails={animal}
                             />
                     )}
 
