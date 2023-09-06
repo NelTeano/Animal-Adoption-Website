@@ -10,6 +10,7 @@ import Home from './pages/home'
 import Gallery from './pages/gallery'
 import LandingPage from './pages/landingpage'
 import AboutPage from './pages/about'
+import FillUpPage from './pages/FillUpPage'
 
 // COMPONENTS
 import Navbar from './components/Navbar'
@@ -73,6 +74,10 @@ function App() {
           <Route
             path='/contact'
               element={<Home/>}/>
+          <Route
+            path='form/:id'
+                element={<FillUpPage/>}
+          />
         </Routes>
     </>
   )

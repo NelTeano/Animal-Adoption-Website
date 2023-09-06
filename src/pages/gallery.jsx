@@ -2,6 +2,7 @@
 import AnimalCard  from '../components/AnimalCard';
 import { Select } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 // STYLES
 import '../assets/styles/galleryStyle.css'
@@ -36,7 +37,7 @@ import '../assets/styles/galleryStyle.css'
 
     
     console.log(AnimalData);
-    
+    // console.log(AnimalData[0]._id)
     
         return (
             <>
@@ -57,14 +58,19 @@ import '../assets/styles/galleryStyle.css'
                     </div>
                 </div>
                 <div className='gallery-container'>
-                    { AnimalData && AnimalData.map((animal, index)=>                
-                            <AnimalCard
-                                key={index}
-                                animalPicture={animal.animal_image}
-                                animalName={animal.name}
-                                animalAge={animal.age}
-                                animalDetails={animal}
-                            />
+                    { AnimalData && AnimalData.map((animal)=>  
+                        <div key={animal._id}>
+                            <Link to={
+                                    `/form/${animal._id}`
+                                }>           
+                                <AnimalCard
+                                    animalPicture={animal.animal_image}
+                                    animalName={animal.name}
+                                    animalAge={animal.age}
+                                    animalDetails={animal}
+                                />
+                            </Link>  
+                        </div> 
                     )}
 
                 </div>

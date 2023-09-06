@@ -1,5 +1,4 @@
 import { Image, Button } from '@chakra-ui/react'
-import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'; 
 
 
@@ -54,16 +53,12 @@ function AnimalCard({ animalName, animalPicture, animalAge }) {
                     <Image
                         sx={imageFormat}
                         src={propsTypes.picture}
-                    ></Image>
-                    <Link 
-                        to={'/form'}
-                    >
+                    ></Image>           
                         <Button
                             sx={buttonStyle}
                         >
                             <h3 style={{fontSize: '15px'}}>{propsTypes.name}</h3> <p>{propsTypes.age} yrs</p>
                         </Button>
-                    </Link>
                 </div>
             </>
         )
