@@ -34,9 +34,6 @@ function Navbar() {
                     <Link to="/about"   style={{ color: location.pathname === '/about' ?  LinkActiveStyle.active : LinkActiveStyle.notActive }}>
                         about us
                     </Link>
-                    <Link to="/service" style={{ color: location.pathname === '/service' ?  LinkActiveStyle.active : LinkActiveStyle.notActive }}>
-                        service
-                    </Link>
                     <Link to="/gallery" style={{ color: location.pathname === '/gallery' ?  LinkActiveStyle.active : LinkActiveStyle.notActive }}>
                         gallery
                     </Link>

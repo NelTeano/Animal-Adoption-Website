@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom";
+import { Image, Button} from "@chakra-ui/react";
+
+
+// STYLES
+import "../assets/styles/fillupStyle.css"
 
 
 export default function FillUpPage() {
@@ -32,13 +37,53 @@ export default function FillUpPage() {
     console.log(ChosenAnimal)   // TO VERIFY THE CHOSEN ANIMAL DATA IS CORRECT
 
 
+    const ButtonsStyle = {
+        backgroundColor: "#ADA7FF",
+        height: "100px",
+        width: "200px",
+        color: "white",
+        _hover: {
+            backgroundColor: '#8984c7',
+            color: 'white',
+            transition: '0.7s'
+        }
+    }
+
+
     return (
         <>
             {ChosenAnimal && // JUST SAMPLE
                 <>
-                    <h1>{ChosenAnimal.name}</h1>
-                    <h1>{ChosenAnimal.age}</h1>
-                    <h1>{ChosenAnimal.breed}</h1>
+                    <div className="information-board">
+                        <div className="animal-appearance">
+                            <Image 
+                                src={ChosenAnimal.animal_image}
+                            />
+                            <div className="animal-label">
+                                <h2>Name : {ChosenAnimal.name}</h2>
+                                <h3>Breed : {ChosenAnimal.breed}</h3>
+                            </div>
+                        </div>
+                        <div className="animal-information">
+                                <div className="information-details">
+                                    <h2>About :  </h2>
+                                    <h3>Name : {ChosenAnimal.name}</h3>
+                                    <h3>Age : {ChosenAnimal.age}</h3>
+                                    <h3>Animal Type : {ChosenAnimal.animal_type}</h3>
+                                    <h3>Breed : {ChosenAnimal.breed}</h3>
+                                    <h3>Last Owner : {ChosenAnimal.last_owner}</h3>
+                                    <h3>Location : {ChosenAnimal.location}</h3>
+                                </div>
+                                <div className="information-buttons">
+                                    <Button sx={ButtonsStyle} > Apply For This Dog</Button>
+                                    <Link
+                                        to={"/gallery"}
+                                    >
+                                        <Button sx={ButtonsStyle} >Choose Other</Button>
+                                    </Link>
+                                </div>
+                        </div>
+                    </div>
                 </>
             }
         </>
