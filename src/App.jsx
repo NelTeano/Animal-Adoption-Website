@@ -47,38 +47,39 @@ function App() {
 
   
   
-  
+  const routes = [{
+    pathname: "/",
+    element: LandingPage
+  },
+  {
+    pathname: "/about",
+    element: AboutPage
+  },
+  {
+    pathname: "/gallery",
+    element: Gallery
+  },
+  {
+    pathname: "/contact",
+    element: Home
+  },
+  {
+    pathname: "form/:id",
+    element: FillUpPage
+  },];
 
+  
   
 
 
   return (
     <>
-      <Navbar/> 
-        <Routes>
-          <Route 
-            path='/' 
-            element={<LandingPage/>}
-          />
-          <Route
-            path='/about' 
-            element={<AboutPage/>}/>
-          <Route
-            path='/service'
-              element={<></>}/>
-          <Route
-            path='/gallery'
-              element={
-                <Gallery/>}
-              />
-          <Route
-            path='/contact'
-              element={<Home/>}/>
-          <Route
-            path='form/:id'
-                element={<FillUpPage/>}
-          />
-        </Routes>
+      <Navbar/>  
+      <Routes>
+      {routes.map((route, index) => (
+        <Route key={index} path={route.pathname} element={<route.element />} />
+      ))}
+    </Routes>
     </>
   )
 }

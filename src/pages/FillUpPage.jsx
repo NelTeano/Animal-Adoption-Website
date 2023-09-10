@@ -53,7 +53,7 @@ function FillUpPage() {
         }   
     
     GetAnimalByParams(); // FETCH THE ROUTE USING PARAMS ROUTE IS USING findById()
-    },[])
+    },[AnimalId.id])
 
 
     if(!isAuthenticated){
