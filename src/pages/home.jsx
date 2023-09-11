@@ -7,8 +7,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 
 // COMPONENTS
-// import Form from '../components/Form'
-import AdoptionForm from '../components/AdoptionForm'
+import Form from '../components/Form'
+
 
 
 // STYLES CSS 
@@ -18,36 +18,14 @@ function Home() {
 
 
     const [count, setCount] = useState(0)
-    const { loginWithRedirect, logout, user } = useAuth0();
-
-
-    const adoptionForm = (handleInputChange) => {
-        return (
-            <div>
-            <label htmlFor="name">Name:</label>
-            <input
-                type='text'
-                name="name"
-                required
-                onChange={handleInputChange}
-            />
-            <label htmlFor="email">Email:</label>
-            <input
-                type='email'
-                name="email"
-                required
-                onChange={handleInputChange}
-            />
-        </div>
-        );
-    };
+    const { loginWithRedirect, logout} = useAuth0();
     
     
         
     
     return (
     <>
-             {/* <Form />       TESTING FORM */}
+            <Form />      
         <div>   
             <div>
                 <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -67,20 +45,6 @@ function Home() {
             <p className="read-the-docs">
                 Click on the Vite and React logos to learn more
             </p>
-
-        { /* TESTING OF THE ADOPTIONFORM (MAKING REUSABLE FORM THAT THE ONLY NEED IS INPUTS )*/ }
-            { user &&
-                <AdoptionForm
-                    postRoute='http://localhost:5174/api/users'
-                >
-                    {adoptionForm}
-                </AdoptionForm>
-            }
-
-
-
-
-
         </div>
     </>
     )

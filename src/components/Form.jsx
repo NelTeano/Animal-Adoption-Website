@@ -1,12 +1,19 @@
 import { useState }  from 'react'
+import { useAuth0 } from '@auth0/auth0-react';
+import { Input, Select, Image } from '@chakra-ui/react'
 
     function Form() {
 
+        const { user } = useAuth0(); // FOR AUTH0 USER DATA 
+
         const [formData, setFormData] = useState({
-            name: '',                                       // STATE FOR CHANGING THE VALUES
-            email: '',
+            name: user?.name || '',           // USE AUTH0 USERNAME IF THERES NO IT WILL BECOME EMPTY STRING
+            email: user?.email || '',         
+            picture: user?.picture || '',
+            address: '',
+            net_income: '',
         });
-    
+
         const handleInputChange = (event) => {              // HANDLING THE VALUES YOURE PUTTING IN INPUTS
             const { name, value } = event.target;             
             setFormData({ ...formData, [name]: value });
@@ -35,32 +42,73 @@ import { useState }  from 'react'
             }
         }
 
+        const netIncomeRanges = [
+            'Less than ₱25,000',
+            '₱25,000 - ₱50,000',
+            '₱50,000 - ₱75,000',
+            '₱75,000 - ₱100,000',
+            'More than ₱100,000',
+        ];
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="name">Name:</label>
-                    <input
-                        type='text'
-                        name="name"
-                        value={formData.name}
+            { user &&
+                <form onSubmit={handleSubmit}>
+                    <div>
+                        <label>Name:</label>
+                        <Input
+                        type="text"
+                        value={user.name}
+                        width={'300px'}
+                        readOnly
+                        />
+                    </div>
+                    <div>
+                        <label>Email:</label>
+                        <Input
+                        type="email"
+                        value={user.email}
+                        width={'300px'}
+                        readOnly
+                        />
+                    </div>
+                    <div>
+                        <label>Picture:</label>
+                        <Image
+                            src={user.picture}
+                            width={'70px'}
+                            height={'70px'}
+                        />
+                    </div>
+                    <div>
+                        <label>Address:</label>
+                        <Input
+                        type="text"
+                        name="address"
+                        value={formData.address}
                         onChange={handleInputChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label htmlFor="email">Email:</label>
-                    <input
-                        type='email'
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        required
-                    />
-                </div>
-                <button type="submit">Submit</button>
-        </form>
+                        width={'300px'}
+                        />
+                    </div>
+                    <div>
+                        <label>Net Income:</label>
+                        <Select 
+                            name="net_income"
+                            value={formData.net_income}
+                            onChange={handleInputChange}
+                            width={'300px'} 
+                            >
+                            <option value="">Select Net Income Range</option>
+                            {netIncomeRanges.map((range) => (
+                                <option key={range} value={range}>
+                                    {range}
+                                </option>
+                            ))}
+                        </Select>
+                    </div>
+                <button type="submit" >Submit</button>
+            </form>
+            }
         </>
     )
     }

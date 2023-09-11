@@ -10,6 +10,9 @@ UserRoutes.post("/users", async (req, res) => {
   const NewUser = new UserModel({
     name: req.body.name,
     email: req.body.email,
+    picture: req.body.picture,
+    address: req.body.address,
+    net_income: req.body.net_income,
   });
 
   try {
