@@ -8,7 +8,7 @@ import Modal from "../components/Modal"
 import AuthButton from "../components/AuthButton"
 
 // STYLES
-import "../assets/styles/fillupStyle.css"
+import "../assets/styles/detailsStyle.css"
 
 
 

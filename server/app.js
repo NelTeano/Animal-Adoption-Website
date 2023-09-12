@@ -9,6 +9,7 @@ import { initDatabase } from './database.js'
 // ROUTES
 import UserRoutes from './routes/UserRoutes.js';
 import AnimalRoutes from './routes/AnimalRoutes.js'
+import ContactRoutes from './routes/ContactRoutes.js'
 
 const app = express();
 dotenv.config();                  // ACCESS .ENV 
@@ -38,4 +39,5 @@ app.listen(PORT, function () {
 
  // USE THE ROUTE YOU CREATED
 app.use("/api", UserRoutes);
-app.use("/api", AnimalRoutes)
+app.use("/api", AnimalRoutes);
+app.use("/api", ContactRoutes);

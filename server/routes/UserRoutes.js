@@ -7,6 +7,7 @@ const UserRoutes = Router();
 // ROUTES TO SUBMIT A POST REQUEST FOR USER DETAILS
 UserRoutes.post("/users", async (req, res) => {
 
+  // SETTING UP REQ BODY INPUTS
   const NewUser = new UserModel({
     name: req.body.name,
     email: req.body.email,

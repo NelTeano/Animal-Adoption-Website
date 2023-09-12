@@ -6,11 +6,12 @@ import { useEffect, useState } from 'react'
 import { useAuth0 } from "@auth0/auth0-react";
 
 // PAGES FILES
-import Home from './pages/home'
+import Testpage from './pages/testpage'
 import Gallery from './pages/gallery'
-import LandingPage from './pages/landingpage'
-import AboutPage from './pages/about'
-import FillUpPage from './pages/FillUpPage'
+import Home from './pages/home'
+import About from './pages/about'
+import Details from './pages/details'
+import Contact from './pages/contact'
 
 // COMPONENTS
 import Navbar from './components/Navbar'
@@ -49,11 +50,11 @@ function App() {
   
   const routes = [{
     pathname: "/",
-    element: LandingPage
+    element: Home
   },
   {
     pathname: "/about",
-    element: AboutPage
+    element: Testpage
   },
   {
     pathname: "/gallery",
@@ -61,12 +62,16 @@ function App() {
   },
   {
     pathname: "/contact",
-    element: Home
+    element: Contact
   },
   {
     pathname: "form/:id",
-    element: FillUpPage
-  },];
+    element:  Details
+  },
+  {
+    pathname: "testpage",
+    element:  About
+  }];
 
   
   

@@ -1,4 +1,5 @@
-
+// CSS STYLES
+import '../assets/styles/aboutStyle.css'
 
 export default function about() {
     return (

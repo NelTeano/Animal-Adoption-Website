@@ -1,10 +1,12 @@
 import { useState }  from 'react'
 import { useAuth0 } from '@auth0/auth0-react';
-import { Input, Select, Image } from '@chakra-ui/react'
+import { Input, Select, Image, Button } from '@chakra-ui/react'
 
     function Form() {
 
         const { user } = useAuth0(); // FOR AUTH0 USER DATA 
+        const [isLoading, setIsLoading] = useState(false); // FOR THE BUTTON TO LOADS WHEN SUBMITTING
+
 
         const [formData, setFormData] = useState({
             name: user?.name || '',           // USE AUTH0 USERNAME IF THERES NO IT WILL BECOME EMPTY STRING
@@ -22,6 +24,8 @@ import { Input, Select, Image } from '@chakra-ui/react'
     
         const handleSubmit = async (event) => {
             event.preventDefault();      // PREVENT DEFAULT VALUES IN SUBMITTING FORM
+            setIsLoading(true);        // ACTIVE THE LOADING ANIMATION OF SUBMIT BUTTON
+
             try {
             const response = await fetch("http://localhost:5174/api/users", {  // FETCHING THE ROUTE OF SERVER
                 method: 'POST',                                         
@@ -39,6 +43,8 @@ import { Input, Select, Image } from '@chakra-ui/react'
             }
             } catch (err) {
             console.error('Error fetching data:', err);
+            }finally {
+                setIsLoading(false); // RESET THE ISLOADING AFTER THE REQUEST COMPLETE
             }
         }
 
@@ -106,7 +112,12 @@ import { Input, Select, Image } from '@chakra-ui/react'
                             ))}
                         </Select>
                     </div>
-                <button type="submit" >Submit</button>
+                    <Button 
+                            type='submit'
+                            isLoading={isLoading}
+                            loadingText="Submitting"
+                            isDisabled={isLoading} // DISABLE THE BUTTON LOAD WHEN LOADING IN STATE DISABLE
+                    >Submit</Button>
             </form>
             }
         </>
