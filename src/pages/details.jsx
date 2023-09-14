@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Image, Button} from "@chakra-ui/react";
-import { useAuth0} from "@auth0/auth0-react";
+
 
 
 // COMPONENTS
 import Modal from "../components/Modal"
-import AuthButton from "../components/AuthButton"
+
 import Form from "../components/Form"
 
 // STYLES
@@ -18,12 +18,11 @@ function FillUpPage() {
 
     // PAGE STATE
     const [ ChosenAnimal , setChosenAnimal ] = useState(''); // FOR STORING THE CHOSENANIMAL DATA
-    const [modalOpen, setModalOpen] = useState(true); // TO BE ABLE CLOSE AND OPEN THE MODAL
+    const [ User , setUser ] = useState(''); // FOR STORING THE CHOSENANIMAL DATA
     const [formOpen, setformOpen] = useState(false); // FOR FORM MODAL CLOSE AND OPEN
 
     // USE FUNCTIONS FROM IMPORTS
-    const { isAuthenticated } = useAuth0();
-    const AnimalId = useParams(); // TO ACCESS THE ID OF ANIMAL USING THE PARAMS 
+    const params = useParams(); // TO ACCESS THE ID OF ANIMAL USING THE PARAMS 
 
 
     // PAGE VARIABLES
@@ -43,7 +42,7 @@ function FillUpPage() {
         async function GetAnimalByParams(){
             
             try{
-                const data = await fetch(`http://localhost:5174/api/animals/${AnimalId.id}`, {
+                const data = await fetch(`http://localhost:5174/api/animals/${params.id}`, {
                     headers: {
                         Accept: 'application/json',
                     },
@@ -53,11 +52,25 @@ function FillUpPage() {
             }catch(err){
                 console.log('Cant Fetch the Animal Data');
             }  
-        }   
-    
-    GetAnimalByParams(); // FETCH THE ROUTE USING PARAMS ROUTE IS USING findById()
-    },[AnimalId.id])
+        }
+        
+        async function getUserByParams(){
+            try{
+                const data = await fetch(`http://localhost:5174/api/users/${params.email}`, {
+                    headers: {
+                        Accept: 'application/json',
+                    },
+                })
+                const jsonUserData = await data.json();
+                setUser(jsonUserData)
+            }catch(err){
+                console.log('Cant Fetch the Animal Data');
+            } 
+        }
 
+    getUserByParams() // FETCH(USER DATA) USING PARAMS EMAIL
+    GetAnimalByParams(); // FETCH(ANIMAL DATA) USING PARAMS ID(FROM ANIMAL CHOSEN IN GALLERY)
+    },[params])
 
     // MODAL OPEN AND CLOSE FUNCTIONS
     const closeformModal = () => { // CLOSE FORM MODAL
@@ -66,19 +79,14 @@ function FillUpPage() {
     const openformModal = () => { // OPEN FORM MODAL
         setformOpen(true);
     };
-    const closeModal = () => { // CLOSE REQUIRE LOGIN MODAL
-        setModalOpen(false);
-    };
 
 
-    console.log(ChosenAnimal)   // TO VERIFY THE CHOSEN ANIMAL DATA IS CORRECT
-    console.log(AnimalId) // TO VERIFY IF THE ANIMAL ID RECEIVED IS CORRECT
+    console.log("ANIMAL : ", ChosenAnimal)   // TO VERIFY THE CHOSEN ANIMAL DATA IS CORRECT
+    console.log("USER : ", User) // TO VERIFY IF THE WE GET THE DATA USING THE PARAMS EMAIL
 
     return (
-        <>
-        {isAuthenticated ? (
             <>
-                {ChosenAnimal && (
+                {ChosenAnimal && 
                 <div className="information-board">
                     <div className="animal-appearance">
                     <Image src={ChosenAnimal.animal_image} />
@@ -107,26 +115,21 @@ function FillUpPage() {
                     </div>
                     </div>
                 </div>
-                )}
+                }
                 <>
-                    <Modal isOpen={formOpen} closeModal={closeformModal}>
-                        <Form/>
-                    </Modal>
+                    {!User.isAlreadyFillup ? (
+                        <>
+                            <Modal isOpen={formOpen} closeModal={closeformModal}>
+                                <Form/>
+                            </Modal>
+                        </>
+                        ) : 
+                        <Modal isOpen={formOpen} closeModal={closeformModal}>
+                            <h2>No form you already filled up</h2>
+                        </Modal>
+                    }
                 </>
             </>
-            
-        ) : (
-            <Modal isOpen={modalOpen} closeModal={closeModal}>
-                <div>
-                <h2>Please Log in</h2>
-                <br />
-                <p>Need to Sign in First To Continue your adopting process</p>
-                <br />
-                <AuthButton />
-                </div>
-            </Modal>
-            )}
-        </>
         );
 }
 

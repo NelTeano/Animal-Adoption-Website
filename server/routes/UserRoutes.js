@@ -25,15 +25,28 @@ UserRoutes.post("/users", async (req, res) => {
   }
 });
 
-// ROUTES TO GET ALL USERS
-UserRoutes.get("/users", async (req, res) =>{
+// ROUTES TO THE USER DATA MATCH IN PARAMS
+UserRoutes.get("/users/:email", async (req, res) =>{
   
+  const email = req.params.email; // GET THE EMAIL IN URL(THE PARAMS)
+
     try{
-        const getUsers = await UserModel.find({});
-        console.log("Success Get Users Data")
-        res.send(getUsers)
+      const getUser = await UserModel.findOne({ email: email }); // FIND THAT EMAIL MATCH THE EMAIL CONST
+        console.log("Success Get User Data by Params")
+        res.send(getUser) // SEND THE DATA GOT FROM DATABASE
     }catch(err){
-        console.log('Cannot Get Users' , err)
+        console.log('Cant Get The User' , err)
+    }
+})
+
+
+UserRoutes.get("/users", async (req, res)=>{
+    try{
+      const GetAllUsers = await UserModel.find({}); // FIND ALL DOCUMENT MATCH THE MODEL
+      console.log("Success Get all User Data");
+      res.send(GetAllUsers); // SEND ALL THE USERS DATA
+    }catch(err){  
+      console.log('Cannot Get All Users' , err)
     }
 })
 

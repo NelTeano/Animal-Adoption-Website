@@ -26,6 +26,10 @@ const UserSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   },
+  isAlreadyFillup: {
+    type: Boolean,
+    default: true
+  },
   date: {
     type: Date,
     default: Date.now,

@@ -1,12 +1,11 @@
 import { useState}  from 'react'
 import { useAuth0 } from '@auth0/auth0-react';
-import { useParams } from "react-router-dom";
 import { Input, Select, Image, Button } from '@chakra-ui/react'
+import { Link } from 'react-router-dom';
 
     function Form() {
 
         const { user } = useAuth0(); // FOR AUTH0 USER DATA 
-        const AnimalId = useParams(); 
         const [isLoading, setIsLoading] = useState(false); // FOR THE BUTTON TO LOADS WHEN SUBMITTING
         
 
@@ -58,7 +57,6 @@ import { Input, Select, Image, Button } from '@chakra-ui/react'
             'More than ₱100,000',
         ];
 
-        console.log("from form", AnimalId)
 
     return (
         <>
@@ -99,6 +97,7 @@ import { Input, Select, Image, Button } from '@chakra-ui/react'
                         value={formData.address}
                         onChange={handleInputChange}
                         width={'300px'}
+                        required
                         />
                     </div>
                     <div>
@@ -107,7 +106,8 @@ import { Input, Select, Image, Button } from '@chakra-ui/react'
                             name="net_income"
                             value={formData.net_income}
                             onChange={handleInputChange}
-                            width={'300px'} 
+                            width={'300px'}
+                            required 
                             >
                             <option value="">Select Net Income Range</option>
                             {netIncomeRanges.map((range) => (
@@ -117,12 +117,14 @@ import { Input, Select, Image, Button } from '@chakra-ui/react'
                             ))}
                         </Select>
                     </div>
-                    <Button 
-                            type='submit'
-                            isLoading={isLoading}
-                            loadingText="Submitting"
-                            isDisabled={isLoading} // DISABLE THE BUTTON LOAD WHEN LOADING IN STATE DISABLE
-                    >Submit</Button>
+                    
+                        <Button 
+                                type='submit'
+                                isLoading={isLoading}
+                                loadingText="Submitting"
+                                isDisabled={isLoading} // DISABLE THE BUTTON LOAD WHEN LOADING IN STATE DISABLE
+                        >Submit</Button>
+
             </form>
             }
         </>

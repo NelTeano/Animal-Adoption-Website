@@ -65,7 +65,7 @@ function App() {
     element: Contact
   },
   {
-    pathname: "form/:id",
+    pathname: "form/:id/:email",
     element:  Details
   },
   {

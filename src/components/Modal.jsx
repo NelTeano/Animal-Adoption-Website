@@ -49,7 +49,7 @@ export default function Modal({ isOpen, closeModal, children }) {
         <div style={modalOverlayStyle}>
             <div style={modalStyle}>
                 <Link
-                    to="/gallery"
+                    to='/'
                 >
                     <button style={closeButtonStyle} onClick={closeModal}>
                         &times;
