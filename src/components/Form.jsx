@@ -1,12 +1,14 @@
-import { useState }  from 'react'
+import { useState}  from 'react'
 import { useAuth0 } from '@auth0/auth0-react';
+import { useParams } from "react-router-dom";
 import { Input, Select, Image, Button } from '@chakra-ui/react'
 
     function Form() {
 
         const { user } = useAuth0(); // FOR AUTH0 USER DATA 
+        const AnimalId = useParams(); 
         const [isLoading, setIsLoading] = useState(false); // FOR THE BUTTON TO LOADS WHEN SUBMITTING
-
+        
 
         const [formData, setFormData] = useState({
             name: user?.name || '',           // USE AUTH0 USERNAME IF THERES NO IT WILL BECOME EMPTY STRING
@@ -56,10 +58,13 @@ import { Input, Select, Image, Button } from '@chakra-ui/react'
             'More than ₱100,000',
         ];
 
+        console.log("from form", AnimalId)
+
     return (
         <>
             { user &&
                 <form onSubmit={handleSubmit}>
+                    
                     <div>
                         <label>Name:</label>
                         <Input
