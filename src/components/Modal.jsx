@@ -27,7 +27,7 @@ export default function Modal({ isOpen, closeModal, children }) {
         position: "relative",
         zIndex: 1001,
         width: "80%",
-        maxWidth: "400px",
+        maxWidth: "500px",
         textAlign: "center",
     };
     

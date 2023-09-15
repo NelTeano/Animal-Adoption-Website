@@ -28,6 +28,9 @@ const animalSchema = new mongoose.Schema({
     animal_image: {
         type: String,
     },
+    applicants :{
+        type: Array,
+    }
 });
 
 const Animal = mongoose.model("Animals", animalSchema);

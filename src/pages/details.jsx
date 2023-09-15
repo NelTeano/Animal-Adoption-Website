@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Image, Button} from "@chakra-ui/react";
+import { Image, Button, Input } from "@chakra-ui/react";
 
 
 
@@ -80,10 +80,49 @@ function FillUpPage() {
         setformOpen(true);
     };
 
+    
+    // FORM HANDLE SUBMIT FOR SUBMITTING APPLICATIONS FOR ANIMALS
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();      // PREVENT DEFAULT VALUES IN SUBMITTING FORM
+        const updatedFormData = {
+            id: User._id, // Keep the original id
+            name: User.name, // Keep the original name
+            picture: User.picture, // Keep the original picture
+            email: User.email, // Keep the original email
+            address: User.address, // Keep the original address
+        };
+
+        try {
+        const response = await fetch(`http://localhost:5174/api/applicants/${ChosenAnimal._id}`, {  // FETCHING THE ROUTE OF SERVER
+            method: 'POST',                                         
+            headers: {
+            'Content-Type': 'application/json',       
+            },
+            body: JSON.stringify(updatedFormData),          // CONVERTS THE BODY(THE SUBMITTED FORM VALUE ) TO STRING
+        });
+            console.log(updatedFormData); // Check the form data before submission
+
+        
+        if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+        } else {
+            console.error('Server responded with an error:', response.statusText);
+        }
+        } catch (err) {
+        console.error('Error fetching data:', err);
+        }
+    }
+
+
+
 
     console.log("ANIMAL : ", ChosenAnimal)   // TO VERIFY THE CHOSEN ANIMAL DATA IS CORRECT
     console.log("USER : ", User) // TO VERIFY IF THE WE GET THE DATA USING THE PARAMS EMAIL
 
+
+    
     return (
             <>
                 {ChosenAnimal && 
@@ -125,7 +164,52 @@ function FillUpPage() {
                         </>
                         ) : 
                         <Modal isOpen={formOpen} closeModal={closeformModal}>
-                            <h2>No form you already filled up</h2>
+                            <form onSubmit={handleSubmit}>
+                                <label>Id:</label><br></br>
+                                    <Input
+                                    type="text"
+                                    width={'300px'}
+                                    name="id"
+                                    value={User._id}
+                                    readOnly
+                                    />
+                                <label>Name:</label><br></br>
+                                    <Input
+                                    type="text"
+                                    width={'300px'}
+                                    name="name"
+                                    value={User.name}
+                                    readOnly
+                                    />
+                                <label>Picture:</label><br></br>
+                                    <Input
+                                    type="text"
+                                    width={'300px'}
+                                    name="picture"
+                                    value={User.picture}
+                                    readOnly
+                                    />
+                                    <br></br>
+                                <label>Email:</label><br></br>
+                                    <Input
+                                    type="text"
+                                    width={'300px'}
+                                    name="email"
+                                    value={User.email}
+                                    readOnly
+                                    />
+                                <label>Address:</label><br></br>
+                                    <Input
+                                    type="text"
+                                    width={'300px'}
+                                    name="address"
+                                    value={User.address}
+                                    readOnly
+                                    />
+                                <Button 
+                                type="submit"
+                                >Confirm Apply</Button>
+                            </form>
                         </Modal>
                     }
                 </>

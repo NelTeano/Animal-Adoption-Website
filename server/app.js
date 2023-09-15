@@ -10,6 +10,7 @@ import { initDatabase } from './database.js'
 import UserRoutes from './routes/UserRoutes.js';
 import AnimalRoutes from './routes/AnimalRoutes.js'
 import ContactRoutes from './routes/ContactRoutes.js'
+import ApplicantRoutes from './routes/ApplyRoutes.js'
 
 const app = express();
 dotenv.config();                  // ACCESS .ENV 
@@ -41,3 +42,4 @@ app.listen(PORT, function () {
 app.use("/api", UserRoutes);
 app.use("/api", AnimalRoutes);
 app.use("/api", ContactRoutes);
+app.use("/api",  ApplicantRoutes);
