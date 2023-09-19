@@ -69,6 +69,8 @@
 .contact-form .messege{
     width: 547px;
     height: 217px;
+    border: 1px solid #777;
+    padding: 10px;
     flex-shrink: 0;
 }
 

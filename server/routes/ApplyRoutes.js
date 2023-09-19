@@ -5,7 +5,7 @@ import AnimalModel from '../models/Animal.js'
 
 const ApplicantsRoutes = Router();
 
-
+// JUST FOR TESTING THE ROUTE IF ITS WORKING
 ApplicantsRoutes.get("/applicants", async (req, res) =>{
 
     try {
@@ -30,6 +30,7 @@ ApplicantsRoutes.get("/applicants", async (req, res) =>{
     }
 })
 
+// POST REQUEST TO PUT A DATA (APPLICANT) TO AN ANIMAL THAT THE USER CHOSE
 ApplicantsRoutes.post("/applicants/:animalId", async (req, res) =>{
 
     console.log("post route applicant enable")

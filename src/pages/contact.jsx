@@ -105,12 +105,12 @@ export default function Contact() {
                             isRequired
                         />
                         <FormLabel>Comment or Messege</FormLabel>
-                        <Input 
+                        <textarea 
                             name='messege'
                             className='messege'
                             type='text'
                             onChange={handleInputChange}
-                            isRequired
+                            required
                         /><br></br>
                         <Button 
                             type='submit'
