@@ -8,7 +8,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 // STYLES
 import '../assets/styles/galleryStyle.css'
 
-
+// COMPONENTS
 import Modal from "../components/Modal"
 import AuthButton from "../components/AuthButton"
 

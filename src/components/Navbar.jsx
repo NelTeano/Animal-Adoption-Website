@@ -108,10 +108,10 @@ function Navbar() {
                     {   menu &&
                     <div style={menuStyle}>
                         <Authbutton></Authbutton>  
-                        <Link to={'AccountDetails'}>
+                        <Link to={`AccountDetails/${user.email}`}>
                             <Button sx={buttonStyle}>Account Details</Button>
                         </Link>
-                        <Link to={'MyAnimals'}>
+                        <Link to={`MyAnimals`}>
                             <Button sx={buttonStyle}>My Animals</Button>
                         </Link>
                     </div>

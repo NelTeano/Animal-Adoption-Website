@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
-
+import { useAuth0 } from '@auth0/auth0-react'
 
 export default function Modal({ isOpen, closeModal, children }) {
 
-
+    const { isAuthenticated } = useAuth0();
 
     const modalOverlayStyle = {
         position: "fixed",
@@ -45,21 +45,34 @@ export default function Modal({ isOpen, closeModal, children }) {
 
 
     return (
-        isOpen && (
+        isOpen && 
+            <>
+            {isAuthenticated ? (
         <div style={modalOverlayStyle}>
             <div style={modalStyle}>
-                <Link
-                    to='/'
-                >
+
                     <button style={closeButtonStyle} onClick={closeModal}>
                         &times;
                     </button>
-                </Link>
             {children}
             </div>
         </div>
-        )
-    );
+        ) : (
+            <div style={modalOverlayStyle}>
+                <div style={modalStyle}>
+                    <Link
+                        to='/'
+                    >
+                        <button style={closeButtonStyle} onClick={closeModal}>
+                            &times;
+                        </button>
+                    </Link>
+                {children}
+                </div>
+            </div>
+        ) }
+        </>
+    )
 }
 
 

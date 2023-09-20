@@ -12,6 +12,8 @@ import Home from './pages/home'
 import About from './pages/about'
 import Details from './pages/details'
 import Contact from './pages/contact'
+import userDetails from './pages/userDetails';
+import userAnimals from './pages/userAnimals';
 
 // COMPONENTS
 import Navbar from './components/Navbar'
@@ -71,7 +73,16 @@ function App() {
   {
     pathname: "testpage",
     element:  About
-  }];
+  },
+  {
+    pathname: `AccountDetails/:email`,
+    element:  userDetails
+  },
+  {
+    pathname: "MyAnimals",
+    element:  userAnimals
+  }
+];
 
   
   
