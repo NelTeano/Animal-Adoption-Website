@@ -70,14 +70,21 @@ in Auth0 Website after you created your account in creating a project you will s
 in the Auth0 `dashboard` then select `application` after that elect one of the application
 in there you need to get the following `DOMAIN` and `CLIENT_ID` of your application for .env `VITE_AUTH0_DOMAIN and VITE_AUTH0_CLIENT_ID`
 
-4. **Paste this values inside `.env` file :**
+4. **Paste this values inside `.env` in `main` file :**
 
     ```js
-    VITE_DATABASE_URI="<DATABASE CONNECTION URL(gets in MongoDB)>"
     VITE_AUTH0_DOMAIN="<YOUR APPLICATION AUTH0 DOMAIN>"
     VITE_AUTH0_CLIENT_ID="<YOUR APPLICATION AUTH0 CLIENT ID>"
     ```
-5. **Run the application**
+    
+    **Paste this values inside `.env` in `server` file :**
+   
+    ```js
+    VITE_DATABASE_URI="<DATABASE CONNECTION URL(gets in MongoDB)>"
+    ```
+   
+   
+6. **Run the application**
 
     1. Open two terminal command lines.
     2. Open the project's **root** directory for each terminal.
@@ -85,7 +92,7 @@ in there you need to get the following `DOMAIN` and `CLIENT_ID` of your applicat
     4. In the second terminal enter the command `cd server && npm run start`.
     5. Wait for both terminals to finish setting up.
 
-6. **Access the application**
+7. **Access the application**
 
     Open the address `localhost:5174` on a browser
 
